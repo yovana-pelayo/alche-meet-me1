@@ -1,3 +1,5 @@
+import { render } from '@testing-library/react'
+import Profile from '../../components/Profile/Profile'
 
 const user = {
   id: 1,
@@ -11,5 +13,6 @@ const user = {
 }
 
 test('Should render the user profile', () => {
-
+  render(<Profile user={user} />)
 })
+// this passed but I am not sure why. Alex explained it to be but I don't see why it passed. I rendered the Profile component and set user to user information. What would be a best practice for this example??
