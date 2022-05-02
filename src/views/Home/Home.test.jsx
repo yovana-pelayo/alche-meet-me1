@@ -19,7 +19,7 @@ describe('App', () => {
     const avatar = screen.getByAltText('avatar')
     const header = screen.getByAltText('header')
     const motto = await screen.findByLabelText('motto')
-    // const likes = screen.getByLabelText('likes')
+    const likes = screen.queryByText('Anime')
     const color = screen.getByLabelText('favColor')
 
     expect(name).toBeInTheDocument()
@@ -28,7 +28,7 @@ describe('App', () => {
     expect(motto).toBeInTheDocument()
     expect(color).toHaveStyle({ color: 'crimson' })
 
-    // expect(likes).toBeInTheDocument()
+    expect(likes).toBeInTheDocument()
   })
 })
 // this passed but I am not sure why. Alex explained it to be but I don't see why it passed. I rendered the Profile component and set user to user information. What would be a best practice for this example??
