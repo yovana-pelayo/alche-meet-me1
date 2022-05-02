@@ -12,8 +12,23 @@ describe('App', () => {
     motto: 'Res Non Verba',
     color: 'crimson',
   }
-  it('Should render the user profile', async () => {
+  it('Should render the user profile information just as name, avatar, motto. etc..,', async () => {
     render(<Profile user={user} />)
+
+    const name = screen.getByText('Vonta')
+    const avatar = screen.getByAltText('avatar')
+    const header = screen.getByAltText('header')
+    const motto = await screen.findByLabelText('motto')
+    // const likes = screen.getByLabelText('likes')
+    const color = screen.getByLabelText('favColor')
+
+    expect(name).toBeInTheDocument()
+    expect(avatar).toBeInTheDocument()
+    expect(header).toBeInTheDocument()
+    expect(motto).toBeInTheDocument()
+    expect(color).toHaveStyle({ color: 'crimson' })
+
+    // expect(likes).toBeInTheDocument()
   })
 })
 // this passed but I am not sure why. Alex explained it to be but I don't see why it passed. I rendered the Profile component and set user to user information. What would be a best practice for this example??
