@@ -1,4 +1,17 @@
+import { render, screen } from '@testing-library/react'
+import App from './App'
 
-test('Should render the header', () => {
+describe('App', () => {
+  it('Should render the header', async () => {
+    render(<App />)
+    const image = screen.getByAltText('Alchemy Logo')
+    const headerText = await screen.findByLabelText(/meet vonta!/i)
+    const header = screen.getByRole('banner')
 
+    expect(image).toBeInTheDocument()
+    expect(headerText).toBeInTheDocument()
+    expect(header).toHaveStyle({ background: '#333' })
+  })
 })
+
+/// getBy so no await
